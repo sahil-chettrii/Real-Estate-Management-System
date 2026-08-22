@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import properties from './assets/data.js';
 import PropertyCard from './components/PropertyCard.jsx';
 import Header from './components/Header.jsx';
-
+import PropertyDetail from './components/PropertyDetail.jsx';
+import AddPropertyForm from './components/AddPropertyForm.jsx';
+import "./components/Style/App.css";
 const App = () => {
   const [query, setQuery] = useState('');
   const [selectedProperty, setSelectedProperty] = useState(null);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const filteredProperties = properties.filter((property) =>
     property.title.toLowerCase().includes(query.toLowerCase())
@@ -13,17 +16,17 @@ const App = () => {
 
   return (
     <div>
-      <Header />
+      <Header onAddClick={() => setIsFormOpen(true)} />
 
       <input
         type="text"
         placeholder="Search by title..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ padding: '10px', width: '100%', maxWidth: '320px', marginBottom: '16px', borderRadius: '8px', border: '1px solid #ccc' }}
+        className="search-input"
       />
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+      <div className="property-grid">
         {filteredProperties.map((property) => (
           <PropertyCard
             key={property.id}
@@ -34,9 +37,17 @@ const App = () => {
       </div>
 
       {selectedProperty && (
-        <p style={{ marginTop: '20px' }}>
-          You clicked: <strong>{selectedProperty.title}</strong>
-        </p>
+        <PropertyDetail
+          property={selectedProperty}
+          onClose={() => setSelectedProperty(null)}
+        />
+      )}
+
+      {isFormOpen && (
+        <AddPropertyForm
+          onClose={() => setIsFormOpen(false)}
+          onAdd={(newProperty) => console.log('New property:', newProperty)}
+        />
       )}
     </div>
   );
