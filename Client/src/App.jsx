@@ -5,12 +5,14 @@ import Header from './components/Header.jsx';
 import PropertyDetail from './components/PropertyDetail.jsx';
 import AddPropertyForm from './components/AddPropertyForm.jsx';
 import "./components/Style/App.css";
+
 const App = () => {
   const [query, setQuery] = useState('');
   const [selectedProperty, setSelectedProperty] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [allProperties, setAllProperties] = useState(properties);
 
-  const filteredProperties = properties.filter((property) =>
+  const filteredProperties = allProperties.filter((property) =>
     property.title.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -36,17 +38,28 @@ const App = () => {
         ))}
       </div>
 
-      {selectedProperty && (
-        <PropertyDetail
-          property={selectedProperty}
-          onClose={() => setSelectedProperty(null)}
-        />
-      )}
+              {selectedProperty && (
+  <PropertyDetail
+    property={selectedProperty}
+    onClose={() => setSelectedProperty(null)}
+    onDelete={(id) => {
+      setAllProperties(allProperties.filter((p) => p.id !== id));
+      setSelectedProperty(null);
+    }}
+  />
+)}
 
       {isFormOpen && (
         <AddPropertyForm
           onClose={() => setIsFormOpen(false)}
-          onAdd={(newProperty) => console.log('New property:', newProperty)}
+          onAdd={(newProperty) => {
+            const propertyWithId = {
+              ...newProperty,
+              id: `EST-${Date.now()}`,
+              image: properties[0].image,
+            };
+            setAllProperties([propertyWithId, ...allProperties]);
+          }}
         />
       )}
     </div>

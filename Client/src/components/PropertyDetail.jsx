@@ -1,10 +1,11 @@
 import React from "react";
 import "./Style/PropertyDetail.css";
-const PropertyDetail = ({ property, onClose }) => {
+      const PropertyDetail = ({ property, onClose, onDelete }) => {
   return (
     <div className="overlay">
       <div className="detail-card">
         <button className="close-btn" onClick={onClose}>Close</button>
+        <button onClick={() => onDelete(property.id)}>Delete</button>
         <img src={property.image} alt={property.title} />
         <h2>{property.title}</h2>
         <p>{property.location}</p>
