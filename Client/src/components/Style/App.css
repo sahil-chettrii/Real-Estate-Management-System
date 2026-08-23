@@ -1,20 +1,27 @@
 .property-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  padding: 0 24px 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 24px;
+  padding: 0 32px 60px;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
 .search-input {
   display: block;
-  margin: 0 24px 20px;
-  padding: 10px;
+  margin: 0 32px 28px;
+  padding: 12px 16px;
   width: 100%;
-  max-width: 320px;
-  border-radius: 8px;
+  max-width: 340px;
+  border-radius: 10px;
   border: 1px solid #E3DED4;
+  font-size: 14px;
+  background: white;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
 .search-input:focus {
-  outline: 2px solid #2F4538;
+  outline: none;
+  border-color: #2F4538;
+  box-shadow: 0 0 0 3px rgba(47, 69, 56, 0.12);
 }

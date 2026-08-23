@@ -5,8 +5,14 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   background: #F6F4EF;
   color: #20241F;
   scroll-behavior: smooth;
+  line-height: 1.5;
+}
+
+::selection {
+  background: #2F4538;
+  color: white;
 }
