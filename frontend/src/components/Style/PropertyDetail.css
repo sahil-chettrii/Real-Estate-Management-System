@@ -1,0 +1,105 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 22, 19, 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.2s ease;
+  padding: 20px;
+  z-index: 100;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  width: 420px;
+  max-width: 100%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+}
+
+.detail-card img {
+  width: calc(100% + 48px);
+  margin: 0 -24px;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-card h2 {
+  margin-top: 16px;
+  font-size: 22px;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 16px;
+  padding: 0 24px 24px;
+  width: 420px;
+  max-width: 100%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.detail-card p strong {
+  color: #2F4538;
+  font-size: 20px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.9);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.detail-card > button {
+  margin-top: 18px;
+  margin-right: 8px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s ease;
+}
+
+.detail-card > button:nth-of-type(2) {
+  background: #E3DED4;
+  color: #20241F;
+}
+
+.detail-card > button:nth-of-type(3) {
+  background: #A33B2E;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
